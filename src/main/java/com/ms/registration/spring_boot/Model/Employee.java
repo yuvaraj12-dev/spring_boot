@@ -23,7 +23,7 @@ public class Employee {
 
     private int experience;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Project project;
 
     public Project getProject() {
