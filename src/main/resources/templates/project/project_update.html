@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Project</title>
+</head>
+<style>
+    .btn {
+      border: 2px solid black;
+      background-color: transparent;
+      color: black;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btnhover:hover {
+        background-color: #04AA6D;
+        color: white;
+    }
+
+    .field_style {
+        width: 500px;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 35px;
+    }
+
+    .field_style {
+        margin: auto;
+        width: 30%;
+        padding: 10px;
+    }
+
+    .updatecss {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=text],[type=date] {
+        width: 100%;
+        padding: 8px 15px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+</style>
+<body>
+<div th:insert="header.html"></div>
+<br><br><br><br><button class="btn btnhover"><a style="color:black" href="/project_list"><--Back</a></button>
+    <div class="field_style">
+        <br><h1 style="text-align:center"><b>UPDATE PROJECT</b></h1><br>
+        <form th:action="@{/editProject/{id}(id=${create_project.id})}" th:object="${create_project}" method="post">
+            <label><b>Project Name : </b></label>
+            <input type="text" th:field="*{projectName}" required /><br>
+            <label><b>Description : </b></label>
+            <input type="text" th:field="*{description}" required/><br>
+            <button class="updatecss">Update Project</button>
+        </form>
+    </div>
+<div th:insert="footer.html"></div>
+</body>
+</html>

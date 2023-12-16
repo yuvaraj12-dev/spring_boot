@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>View Employee</title>
+</head>
+<style>
+
+    table, td, th {
+      border: 2px solid #ddd;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 6px;
+    }
+
+    th {
+        width:50%;
+    }
+
+    .btn {
+        border: 2px solid black;
+        background-color: transparent;
+        color: black;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btnhover:hover {
+        background-color: #04AA6D;
+        color: white;
+    }
+
+</style>
+<body>
+<div th:insert="header.html"></div>
+<br><br><br><br><h1 style="text-align:center">EMPLOYEE DETAIL</h1><br>
+<table width="100%">
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>NAME</th>
+        <td th:text="${employee.name}"></td>
+    </tr>
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>DATE OF BIRTH</th>
+        <td th:text="${employee.dateOfBirth}"></td>
+    </tr>
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>EMAIL</th>
+        <td th:text="${employee.email}"></td>
+    </tr>
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>PHONE NO</th>
+        <td th:text="${employee.mobileNo}"></td>
+    </tr>
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>ROLE</th>
+        <td th:text="${employee.role}"></td>
+    </tr>
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>SALARY</th>
+        <td th:text="${employee.salary}"></td>
+    </tr>
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>EXPERIENCE</th>
+        <td th:text="${employee.experience}"></td>
+    </tr>
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>DATE OF JOINING</th>
+        <td th:text="${employee.dateOfJoining}"></td>
+    </tr>
+    <tr th:each="employee : ${employee_create}" align="center">
+        <th>PROJECT</th>
+        <td th:text="${employee.project.projectName}"></td>
+    </tr>
+</table>
+<br><button class="btn btnhover"><a style="color:black" href="/employee_list"><--Back</a></button><br><br><br>
+<div th:insert="footer.html"></div>
+</body>
+</html>

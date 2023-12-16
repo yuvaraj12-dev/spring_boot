@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Project List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    table, td, th {
+      border: 2px solid #ddd;
+      text-align: left;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 15px;
+    }
+
+    th {
+        background-color:hsl(89, 43%, 51%);
+    }
+
+    .btn {
+      border: 2px solid black;
+      background-color: transparent;
+      color: black;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .project {
+        border-color: #04AA6D;
+        color: green;
+    }
+
+    .project:hover {
+        background-color: #04AA6D;
+        color: white;
+    }
+
+</style>
+<body>
+<div th:insert="header.html"></div>
+<center>
+    <br><br><br><br><h1><b> PROJECT LIST </b></h1>
+    <br><table>
+    <thead>
+    <tr>
+        <th><b>Project Name</b></th>
+        <th><b>Description</b></th>
+        <th><b>Action</b></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project: ${create_project}">
+        <td th:text="${project.projectName}"></td>
+        <td th:text="${project.description}"></td>
+        <td>
+            <a th:href="@{/viewProject/{id}(id=${project.id})}"><i class="fa fa-eye" style="font-size:24px;color:blue"></i></a>&nbsp;
+            <a th:href="@{/editProject/{id}(id=${project.id})}"><i class="fa fa-edit" style="font-size:24px;color:blue"></i></a>&nbsp;
+            <a th:href="@{/deleteProject/{id}(id=${project.id})}"><i class="fa fa-remove" style="font-size:24px;color:red"></i></a>&nbsp;
+        </td>
+    </tr>
+    </tbody>
+</table></br>
+    <button class="btn project"><b><a style="color:black" href="/newProject">Create Project --- ></a></b></button>
+</center>
+<div th:insert="footer.html"></div>
+</body>
+</html>

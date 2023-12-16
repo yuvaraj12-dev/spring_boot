@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Project View</title>
+</head>
+<style>
+    .btn {
+        border: 2px solid black;
+        background-color: transparent;
+        color: black;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btnhover:hover {
+        background-color: #04AA6D;
+        color: white;
+    }
+
+    table, td, th {
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 8px;
+    }
+
+    th {
+        width:50%;
+    }
+
+</style>
+<body>
+<div th:insert="header.html"></div>
+<br><br><br><br><h1 style="text-align:center">PROJECT DETAIL</h1><br>
+<table width="100%">
+    <tr th:each="project : ${create_project}" align="center">
+        <th>PROJECT NAME</th>
+        <td th:text="${project.projectName}"></td>
+    </tr>
+    <tr th:each="project : ${create_project}" align="center">
+        <th>DESCRIPTION</th>
+        <td th:text="${project.description}"></td>
+    </tr>
+</table>
+<br><button class="btn btnhover"><a style="color:black" href="/project_list"><--Back</a></button>
+<div th:insert="footer.html"></div>
+</body>
+</html>

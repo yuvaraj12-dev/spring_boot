@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Employee</title>
+</head>
+<style>
+    .btn {
+      border: 2px solid black;
+      background-color: transparent;
+      color: black;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btnhover:hover {
+        background-color: #04AA6D;
+        color: white;
+    }
+
+    .field_style {
+        width: 400px;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 40px;
+    }
+
+    .field_style {
+        margin: auto;
+        padding: 10px;
+    }
+
+    .savecss {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 12px;
+        margin: 2px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=text],[type=date],[type=number] {
+        width: 100%;
+        padding: 3px 6px;
+        margin: 2px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .scroll{
+        background-color: #f2f2f2;
+        width:500px;
+        height: 400px;
+        overflow:auto;
+    }
+
+
+</style>
+<body>
+<div th:insert="header.html"></div>
+<br><br><br><br><button class="btn btnhover"><a style="color:black" href="/employee_list"><--Back</a></button><br>
+    <div class="field_style scroll">
+        <h1 style="text-align:center"><b>CREATE EMPLOYEE</b></h1><br>
+        <form th:action="@{/new}" th:object="${employee_create}" method="post">
+            <label><b>Name : </b></label>
+            <input type="text" th:field="*{name}" required title="Please enter your name"/><br>
+            <label><b>Date Of Birth : </b></label>
+            <input type="date" th:field="*{dateOfBirth}" required title="Please enter your dateofbirth"/><br>
+            <label><b>Email : </b></label>
+            <input type="text" th:field="*{email}" required title="Please enter your dateofbirth"/><br>
+            <label><b>Mobile No : </b></label>
+            <input type="number" th:field="*{mobileNo}" required title="Please enter your mobile no"/><br>
+            <label><b>Role : </b></label>
+            <input type="text" th:field="*{role}" required title="please enter your role"/><br>
+            <label><b>Salary : </b></label>
+            <input type="text" th:field="*{salary}" required title="please enter your employee Code"/><br>
+            <label><b>Experience : </b></label>
+            <input type="number" th:field="*{experience}" required title="please enter your employee Code"/><br>
+            <label><b>Date Of Joining : </b></label>
+            <input type="date" th:field="*{dateOfJoining}" required title="please enter your employee Code"/><br>
+            <label><b>Project : </b></label>
+<!--            <input type="text" th:field="*{project}" required title="please enter your employee Code"/><br>-->
+<!--            <input th:field="*{project}" type="radio"  th:each="project : ${employee_project}" th:text="${project.projectName}" value="${project.id}">-->
+            <select th:field="*{project}">
+                <option value=""></option>
+                <option th:each="project: ${employee_project}" th:value="${project.id}" th:text="${project.projectName}"></option>
+            </select>
+<!--            <select id="project" name="project.id" th:field="*{project}">-->
+<!--                <option th:each="project : ${employee_project}" th:value="${author.id}" th:text="${author.name}"></option>-->
+<!--            </select>-->
+            <button class="savecss">Create Employee</button><br>
+        </form>
+    </div>
+<div th:insert="footer.html"></div>
+</body>
+</html>

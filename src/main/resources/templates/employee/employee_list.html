@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    table, td, th {
+      border: 2px solid #ddd;
+      text-align: left;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout:fixed;
+    }
+
+    th, td {
+      padding: 15px;
+    }
+
+    th {
+        background-color:hsl(89, 43%, 51%);
+    }
+
+    td {
+        overflow : auto;
+    }
+
+    .btn {
+      border: 2px solid black;
+      background-color: transparent;
+      color: black;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .employee {
+        border-color: #04AA6D;
+        color: green;
+    }
+
+    .employee:hover {
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+<body>
+<div th:insert="header.html"></div>
+<center>
+    <br><br><br><br><h1><b> EMPLOYEE LIST </b></h1>
+    <br><table style="width:100%">
+    <thead>
+    <tr>
+        <th><b>Name</b></th>
+        <th><b>Date Of Birth</b></th>
+        <th><b>Email</b></th>
+        <th><b>Mobile No</b></th>
+        <th><b>Role</b></th>
+        <th><b>Salary</b></th>
+        <th><b>Experience</b></th>
+        <th><b>Date Of Joining</b></th>
+        <th><b>Project</b></th>
+        <th><b>Action</b></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee: ${employee_create}">
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.dateOfBirth}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.mobileNo}"></td>
+        <td th:text="${employee.role}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:text="${employee.experience}"></td>
+        <td th:text="${employee.dateOfJoining}"></td>
+        <td th:text="${employee.project.projectName}"></td>
+        <td>
+            <a th:href="@{/view/{id}(id=${employee.id})}"><i class="fa fa-eye" style="font-size:24px;color:blue"></i></a>&nbsp;
+            <a th:href="@{/edit/{id}(id=${employee.id})}"><i class="fa fa-edit" style="font-size:24px;color:blue"></i></a>&nbsp;
+            <a th:href="@{/delete/{id}(id=${employee.id})}"><i class="fa fa-remove" style="font-size:24px;color:red"></i></a>&nbsp;
+        </td>
+    </tr>
+    </tbody>
+</table></br>
+    <button class="btn employee"><b><a style="color:black" href="/new">Create Employee --- ></a></b></button>
+</center>
+<div th:insert="footer.html"></div>
+</body>
+</html>
